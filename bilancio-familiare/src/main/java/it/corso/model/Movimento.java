@@ -1,6 +1,6 @@
 package it.corso.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ public class Movimento {
     private int id;
 
     private String descrizione;
-    private LocalDateTime ricezione;
+    private LocalDate ricezione;
 
     @Column(name = "importo_entrata")
     private Integer importoEntrata;

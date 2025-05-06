@@ -204,10 +204,10 @@
                         <td id="categorie">Data:</td>
                     </tr>
                     <tr th:each="mov : ${movimenti}" id="righe">
-                        <td th:text="${mov.importoEntrata}">
+                        <td th:text="${mov.importoEntrata != null ? mov.importoEntrata : 0}">
                             entrata 1
                         </td>
-                        <td th:text="${mov.importoUscita}">
+                        <td th:text="${mov.importoUscita != null ? mov.importoUscita : 0}">
                             uscita 1
                         </td>
                         <td th:text="${mov.descrizione}">descrizione</td>

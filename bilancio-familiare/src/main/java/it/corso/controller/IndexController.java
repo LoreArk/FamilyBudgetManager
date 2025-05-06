@@ -1,15 +1,22 @@
 package it.corso.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.model.Movimento;
 import it.corso.service.MovimentoService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 @RequestMapping("/")
@@ -20,9 +27,18 @@ public class IndexController {
     
     @GetMapping
     public String renderPage(Model model){
-        
+        Movimento movimento = new Movimento();
+        model.addAttribute("movimento", movimento);
+
         List<Movimento> movimenti = movimentoService.getAllMovimenti();
         model.addAttribute("movimenti", movimenti);
         return "index";
     }
+
+    @PostMapping
+    public String gestioneForm(@ModelAttribute Movimento movimento ) {
+        movimentoService.salvaMovimento(movimento);
+        return "redirect:/";
+    }
+    
 }
