@@ -15,11 +15,11 @@ import it.corso.service.MovimentoService;
 @RequestMapping("/")
 public class IndexController {
     
+    @Autowired
+    private MovimentoService movimentoService;
+    
     @GetMapping
     public String renderPage(Model model){
-        
-        @Autowired
-        private MovimentoService movimentoService;
         
         List<Movimento> movimenti = movimentoService.getAllMovimenti();
         model.addAttribute("movimenti", movimenti);
