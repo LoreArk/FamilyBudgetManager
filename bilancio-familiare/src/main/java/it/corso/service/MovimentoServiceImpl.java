@@ -10,26 +10,26 @@ import java.util.Optional;
 
 @Service
 public class MovimentoServiceImpl implements MovimentoService {
-
+    
     @Autowired
     private MovimentoRepository movimentoRepository;
-   
-        
+    
+    
     public List<Movimento> getAllMovimenti() {
         return (List<Movimento>) movimentoRepository.findAll();
     }
-   
-      
+    
+    
     public void salvaMovimento(Movimento movimento) {
         movimentoRepository.save(movimento);
     }
-
-       
+    
+    
     public Optional<Movimento> getMovimentoById(int id) {
         return movimentoRepository.findById(id);
     }
-
-         
+    
+    
     public void eliminaMovimento(int id) {
         movimentoRepository.deleteById(id);
     }
