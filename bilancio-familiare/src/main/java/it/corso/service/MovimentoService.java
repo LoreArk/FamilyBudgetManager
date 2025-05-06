@@ -1,5 +1,10 @@
 package it.corso.service;
 
+public interface MovimentoService {
+
+}
+package it.corso.service;
+
 import it.corso.model.Movimento;
 import it.corso.repository.MovimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
