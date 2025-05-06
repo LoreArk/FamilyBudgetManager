@@ -203,16 +203,15 @@
                         <td id="categorie">Descrizione</td>
                         <td id="categorie">Data:</td>
                     </tr>
-                    <tr id="righe">
-                        <td>
+                    <tr th:each="mov : ${movimenti}" id="righe">
+                        <td th:text="${mov.importoEntrata}">
                             entrata 1
                         </td>
-                        <td>
+                        <td th:text="${mov.importoUscita}">
                             uscita 1
                         </td>
-                        <td>descrizione</td>
-                        <td>data:</td>
-
+                        <td th:text="${mov.descrizione}">descrizione</td>
+                        <td th:text="${#temporals.format(mov.ricezione, 'dd-MM-yyyy')}">data:</td>
                     </tr>
                 </table>
                 <div id="azioni">
