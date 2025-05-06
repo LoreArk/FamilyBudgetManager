@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilancio familiare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            color: #dee2e6;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+        }
+
+        #container {
+            width: 100%;
+            margin-bottom: 40px;
+            padding-top: 10px;
+            padding-bottom: 0px;
+            background-color: #2c2c2c;
+            color: #dee2e6;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.541);
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 80%;
+            border-collapse: collapse;
+            border-radius: 20px;
+            background-color: #dee2e6;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        td {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        #righe {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            font-weight: lighter
+        }
+
+        #testa {
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            height: 50px;
+        }
+
+        #categorie {
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            background-origin: padding-box;
+            background-clip: content-box;
+            background-color: #343a40;
+            color: #f8f9fa;
+            border-radius: 25px;
+        }
+
+        #entrata {
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            background-origin: padding-box;
+            background-clip: content-box;
+            background-color: #48aa5f;
+            color: #f8f9fa;
+            border-radius: 25px;
+        }
+
+        #uscita {
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            background-origin: padding-box;
+            background-clip: content-box;
+            background-color: #df4353;
+            color: #f8f9fa;
+            border-radius: 25px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #azioni {
+            margin: 20px auto;
+            width: 80%;
+            padding: 20px;
+            background-color: #f8f9fa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .btn {
+            background-color: #343a40;
+            color: #f8f9fa;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #495057;
+            color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #252525;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.541);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #f8f9fa !important;
+        }
+        .nav-link:hover {
+            color: #dee2e6 !important;
+        }
+        .dropdown-menu {
+            background-color: #343a40;
+        }
+        .dropdown-item {
+            color: #f8f9fa;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .dropdown-item:hover {
+            color: #dee2e6;
+            background-color: #495057;
+        }
+
+        .dropdown-menu {
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.541);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1 class="text-center fs-1 mt-4">Tabella bilancio familiare</h1>
+        <div id="menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" id="navlink" href="#">Bilancio familiare</a>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a id="navlink" class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="navlink" href="#">Account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" id="navlink">Azioni</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navlink" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Menu
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Entrate</a></li>
+                                    <li><a class="dropdown-item" href="#">Uscite</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#" id="Info">Info</a></li>
+                                </ul>
+                            </li>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+                <table>
+                    <tr id="testa">
+                        <td id="entrata">Entrate</td>
+                        <td id="uscita">Uscite</td>
+                        <td id="categorie">Descrizione</td>
+                        <td id="categorie">Data:</td>
+                    </tr>
+                    <tr id="righe">
+                        <td>
+                            entrata 1
+                        </td>
+                        <td>
+                            uscita 1
+                        </td>
+                        <td>descrizione</td>
+                        <td>data:</td>
+
+                    </tr>
+                    <tr id="righe">
+                        <td>
+                            entrata 2
+                        </td>
+                        <td>
+                            uscita 2
+                        </td>
+                        <td>descrizione</td>
+                        <td>data:</td>
+
+                    </tr>
+                    <tr id="righe">
+                        <td>
+                            entrata 3
+                        </td>
+                        <td>
+                            uscita 3
+                        </td>
+                        <td>descrizione</td>
+                        <td>data:</td>
+
+                    </tr>
+                </table>
+                <div id="azioni">
+                    <form action="#" method="post">
+                        <div class="mb-3">
+                            <label for="entrate" class="form-label">Entrate</label>
+                            <input type="text" class="form-control" id="entrate" name="entrate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="uscite" class="form-label">Uscite</label>
+                            <input type="text" class="form-control" id="uscite" name="uscite">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descrizione" class="form-label">Descrizione</label>
+                            <input type="text" class="form-control" id="descrizione" name="descrizione">
+                        </div>
+                        <div class="mb-3">
+                            <label for="data" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="data" name="data">
+                        </div>
+                        <button type="submit" class="btn">Aggiungi</button>
+                    </form>
+                </div>
+</body>
+
+</html>
