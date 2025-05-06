@@ -25,9 +25,24 @@ public class IndexController {
     public String renderPage(Model model){
         Movimento movimento = new Movimento();
         model.addAttribute("movimento", movimento);
-        
+
         List<Movimento> movimenti = movimentoService.getAllMovimenti();
         model.addAttribute("movimenti", movimenti);
+    
+        double totaleEntrate = 0;
+        double totaleUscite = 0;
+
+        for(Movimento mov : movimenti){
+            if(mov.getImportoEntrata() != null){
+                totaleEntrate += mov.getImportoEntrata();
+            }
+            if(mov.getImportoUscita() != null){
+                totaleUscite += mov.getImportoUscita(); 
+            }
+        }
+        double saldoConto = totaleEntrate - totaleUscite;
+        model.addAttribute("saldoConto", saldoConto);
+        
         return "index";
     }
     
