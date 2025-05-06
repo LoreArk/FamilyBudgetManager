@@ -14,23 +14,29 @@ public class MovimentoServiceImpl implements MovimentoService {
     @Autowired
     private MovimentoRepository movimentoRepository;
     
-    
+    @Override
     public List<Movimento> getAllMovimenti() {
         return (List<Movimento>) movimentoRepository.findAll();
     }
     
-    
+    @Override
     public void salvaMovimento(Movimento movimento) {
         movimentoRepository.save(movimento);
     }
     
     
-    public Optional<Movimento> getMovimentoById(int id) {
-        return movimentoRepository.findById(id);
-    }
-    
-    
+    @Override
     public void eliminaMovimento(int id) {
         movimentoRepository.deleteById(id);
+    }
+
+
+    @Override
+    public Movimento getMovimentoById(Integer id) {
+        Optional<Movimento> movimentoOptional = movimentoRepository.findById(id);
+        if(movimentoOptional.isPresent()){
+            return movimentoOptional.get();
+        }
+        return null;
     }
 }
