@@ -214,46 +214,24 @@
                         <td>data:</td>
 
                     </tr>
-                    <tr id="righe">
-                        <td>
-                            entrata 2
-                        </td>
-                        <td>
-                            uscita 2
-                        </td>
-                        <td>descrizione</td>
-                        <td>data:</td>
-
-                    </tr>
-                    <tr id="righe">
-                        <td>
-                            entrata 3
-                        </td>
-                        <td>
-                            uscita 3
-                        </td>
-                        <td>descrizione</td>
-                        <td>data:</td>
-
-                    </tr>
                 </table>
                 <div id="azioni">
-                    <form action="#" method="post">
+                    <form th:object="${movimento}" method="post">
                         <div class="mb-3">
                             <label for="entrate" class="form-label">Entrate</label>
-                            <input type="text" class="form-control" id="entrate" name="entrate">
+                            <input  type="text" th:field="*{importoEntrata}" class="form-control" placeholder="800">
                         </div>
                         <div class="mb-3">
                             <label for="uscite" class="form-label">Uscite</label>
-                            <input type="text" class="form-control" id="uscite" name="uscite">
+                            <input type="text" th:field="*{importoUscita}" class="form-control" id="uscite" placeholder="250">
                         </div>
                         <div class="mb-3">
                             <label for="descrizione" class="form-label">Descrizione</label>
-                            <input type="text" class="form-control" id="descrizione" name="descrizione">
+                            <input type="text" th:field="*{descrizione}" class="form-control" id="descrizione" placeholder="Spesa alimentari" required>
                         </div>
                         <div class="mb-3">
                             <label for="data" class="form-label">Data</label>
-                            <input type="date" class="form-control" id="data" name="data">
+                            <input type="date" th:field="*{ricezione}" class="form-control" id="data" placeholder="12/20/2024">
                         </div>
                         <button type="submit" class="btn">Aggiungi</button>
                     </form>

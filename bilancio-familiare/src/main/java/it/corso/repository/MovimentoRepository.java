@@ -6,4 +6,5 @@ import it.corso.model.Movimento;
 
 public interface MovimentoRepository extends CrudRepository<Movimento, Integer>{
 
+    
 }
