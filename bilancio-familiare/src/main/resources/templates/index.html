@@ -214,6 +214,9 @@
                         <td th:text="${#temporals.format(mov.ricezione, 'dd-MM-yyyy')}">data:</td>
                     </tr>
                 </table>
+                <div class="text-end mt-3">
+                    <h5 th:text="|Totale: ${#numbers.formatDecimal(totaleBilancio,0,'POINT',2,'COMMA')} Euro|">Totale </h5>
+                </div>
                 <div id="azioni">
                     <form th:object="${movimento}" method="post">
                         <div class="mb-3">
