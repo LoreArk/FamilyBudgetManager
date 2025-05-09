@@ -54,7 +54,7 @@ public class IndexController {
     }
     
 
-    @GetMapping
+    @GetMapping("/rimuovi")
     public String rimozioneLibro(@RequestParam Integer id, HttpSession session){
         movimentoService.eliminaMovimento(id);
         return "redirect:/";

@@ -245,11 +245,11 @@
                         </td>
                         <td th:text="${mov.descrizione}">descrizione</td>
                         <td th:text="${#temporals.format(mov.ricezione, 'dd-MM-yyyy')}">data:</td>
-                        <td class="text-end"><a th:href="@{/riservata/rimuovi(id=${libroCarrello.id})}" class="btn btn-sm btn-danger">Rimuovi</a></td>
+                        <td class="text-end"><a th:href="@{/rimuovi(id=${mov.id})}" class="btn btn-sm btn-danger">Rimuovi</a></td>
                     </tr>
                 </table>
-                <div class="text-end mt-3">
-                    <h5 th:text="|Totale: ${#numbers.formatDecimal(totaleBilancio,0,'POINT',2,'COMMA')} Euro|">Totale </h5>
+                <div class="text-center mt-3">
+                    <h5 th:text="|Saldo Bilancio: ${#numbers.formatDecimal(saldoConto,0,'POINT',2,'COMMA')} Euro|">Totale </h5>
                 </div>
                 <div id="azioni">
                     <form th:object="${movimento}" method="post">
